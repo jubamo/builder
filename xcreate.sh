@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sed -i 's/-ru=y/-es=y/g' *.config
+sed -i 's/_ru=y/_es=y/g' *.config
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export XDIR=$SCRIPT_DIR
 
@@ -26,9 +29,6 @@ if [ "$?" != "0" ]; then
 fi
 
 XTOPDIR=$XDIR/$TARGET_BRANCH
-
-sed -i 's/-ru=y/-es=y/g' *.config
-sed -i 's/_ru=y/_es=y/g' *.config
 
 #find . -maxdepth 1 -type f -name "*.sh" -exec chmod 775 -- {} + >/dev/null
 find . -maxdepth 1 -type f -name "*.sh" -exec cp {} $XTOPDIR \; >/dev/null
